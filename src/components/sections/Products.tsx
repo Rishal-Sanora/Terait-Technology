@@ -126,7 +126,7 @@ export function Products() {
                 scale={1.02}
                 tiltMaxAngleX={5}
                 tiltMaxAngleY={5}
-                className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-lg group relative overflow-hidden hover:shadow-2xl hover:border-white/40 transition-all duration-300 h-full"
+                className="glass rounded-2xl p-6 shadow-lg group relative overflow-hidden hover:shadow-2xl hover:border-white/40 transition-all duration-300 h-full"
               >
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"

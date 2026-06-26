@@ -18,7 +18,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold text-foreground/90 mb-10 drop-shadow-lg bg-transparent"
+          className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold text-black mb-10 drop-shadow-lg bg-transparent"
         >
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
@@ -28,8 +28,8 @@ export function Hero() {
         </motion.div>
 
         <div className="relative w-full max-w-6xl mx-auto flex flex-col items-center">
-          {/* Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[120%] bg-brand-blue/15 blur-[120px] rounded-[100%] pointer-events-none mix-blend-overlay" />
+          {/* Ambient Glow Spotlight to ensure text contrast over video */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[70%] h-[140%] bg-white/60 blur-[100px] rounded-[100%] pointer-events-none" />
 
           <motion.div
             initial="hidden"
@@ -40,7 +40,7 @@ export function Hero() {
             }}
             className="relative z-10 flex flex-col items-center w-full"
           >
-            <h1 className="text-[clamp(3.5rem,10vw,8.5rem)] leading-[0.9] font-bold tracking-tighter mb-8 flex flex-col items-center drop-shadow-[0_4px_32px_rgba(255,255,255,0.7)] min-h-[220px] justify-center">
+            <h1 className="text-[clamp(3.5rem,10vw,8.5rem)] leading-[0.9] font-bold tracking-tighter mb-8 flex flex-col items-center drop-shadow-[0_2px_10px_rgba(255,255,255,1)] min-h-[220px] justify-center">
               <div className="flex gap-4 flex-wrap justify-center overflow-hidden">
                 <motion.span
                   variants={{
@@ -94,7 +94,7 @@ export function Hero() {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0, transition: { duration: 1.2, delay: 0.8 } },
               }}
-              className="max-w-3xl text-lg md:text-2xl text-foreground font-semibold leading-relaxed drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] mt-4 px-4"
+              className="max-w-3xl text-lg md:text-2xl text-foreground font-semibold leading-relaxed drop-shadow-[0_2px_10px_rgba(255,255,255,1)] mt-4 px-4"
             >
               Enterprise networking, surveillance, cloud and cybersecurity — delivered end-to-end by
               certified engineers.{" "}
@@ -135,8 +135,8 @@ export function Hero() {
               📞
             </span>
             <div className="text-left text-sm">
-              <div className="text-foreground/70 font-medium">Talk to an expert</div>
-              <div className="font-bold text-base">+91 99645 46464</div>
+              <div className="text-black font-semibold">Talk to an expert</div>
+              <div className="font-bold text-base text-black">+91 99645 46464</div>
             </div>
           </a>
         </motion.div>
@@ -168,16 +168,16 @@ export function Hero() {
                 <div className="text-3xl md:text-4xl font-display font-bold text-gradient drop-shadow-sm">
                   {n}
                 </div>
-                <div className="text-xs md:text-sm font-semibold text-foreground/70 mt-2">{l}</div>
+                <div className="text-xs md:text-sm font-semibold text-black mt-2">{l}</div>
               </div>
             </Tilt>
           ))}
         </motion.div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-foreground/50">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs font-bold text-black">
         <span>Scroll to explore</span>
-        <span className="h-8 w-px bg-gradient-to-b from-foreground/30 to-transparent" />
+        <span className="h-8 w-px bg-gradient-to-b from-slate-400 to-transparent" />
       </div>
     </section>
   );

@@ -144,7 +144,7 @@ export function Services() {
                 scale={1.02}
                 tiltMaxAngleX={5}
                 tiltMaxAngleY={5}
-                className="group relative bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-xl overflow-hidden hover:shadow-2xl hover:border-white/40 transition-shadow duration-300 h-full"
+                className="group relative glass rounded-3xl p-8 shadow-xl overflow-hidden hover:shadow-2xl hover:border-white/40 transition-shadow duration-300 h-full"
               >
                 <div
                   className={`absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500 bg-gradient-to-br ${s.accent}`}
@@ -165,19 +165,15 @@ export function Services() {
                     {s.icon}
                   </div>
                   <h3 className="mt-5 text-xl font-display font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{s.desc}</p>
+                  <p className="mt-2 text-sm text-black font-medium leading-relaxed">{s.desc}</p>
                   <ul className="mt-5 space-y-1.5">
                     {s.items.slice(0, 3).map((it) => (
-                      <li key={it} className="flex items-center gap-2 text-sm text-foreground/75">
+                      <li key={it} className="flex items-center gap-2 text-sm text-black font-medium">
                         <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[var(--brand-red)] to-[var(--brand-blue)]" />
                         {it}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 group-hover:text-foreground transition">
-                    Learn more{" "}
-                    <span className="transition-transform group-hover:translate-x-1">→</span>
-                  </div>
                 </div>
               </Tilt>
             </motion.button>
@@ -217,43 +213,41 @@ export function SectionHeader({
   );
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, type: "spring" }}
       className={`mb-12 md:mb-16 max-w-4xl ${center ? "mx-auto text-center" : ""}`}
     >
-      <div className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 shadow-2xl border border-white/20 inline-block w-full hover:shadow-3xl transition-shadow">
-        <div
-          className={`inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-foreground/80 drop-shadow-sm ${center ? "justify-center w-full" : ""}`}
-        >
-          <span className="h-px w-8 bg-gradient-to-r from-[var(--brand-red)] to-[var(--brand-blue)]" />
-          {kicker}
-        </div>
-
-        {linkTo ? (
-          <Link to={linkTo} className="block group">
-            {TitleEl}
-          </Link>
-        ) : (
-          TitleEl
-        )}
-        {subtitle && (
-          <p className="mt-5 text-lg text-foreground/90 font-medium drop-shadow-sm leading-relaxed">
-            {subtitle}
-          </p>
-        )}
-        {linkTo && (
-          <div className="mt-6">
-            <Link
-              to={linkTo}
-              className="inline-flex items-center gap-2 text-brand-red font-semibold hover:gap-3 transition-all"
-            >
-              View All Services →
-            </Link>
-          </div>
-        )}
+      <div
+        className={`inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-black font-bold drop-shadow-sm ${center ? "justify-center w-full" : ""}`}
+      >
+        <span className="h-px w-8 bg-gradient-to-r from-[var(--brand-red)] to-[var(--brand-blue)]" />
+        {kicker}
       </div>
+
+      {linkTo ? (
+        <Link to={linkTo} className="block group">
+          {TitleEl}
+        </Link>
+      ) : (
+        TitleEl
+      )}
+      {subtitle && (
+        <p className="mt-5 text-lg text-black font-semibold drop-shadow-sm leading-relaxed">
+          {subtitle}
+        </p>
+      )}
+      {linkTo && (
+        <div className="mt-6">
+          <Link
+            to={linkTo}
+            className="inline-flex items-center gap-2 text-brand-red font-semibold hover:gap-3 transition-all"
+          >
+            View All Services →
+          </Link>
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -291,10 +285,10 @@ function ServiceModal({ service, onClose }: { service: Service | null; onClose: 
             <h3 className="mt-6 text-3xl md:text-4xl font-display font-bold text-gradient">
               {service.title}
             </h3>
-            <p className="mt-4 text-foreground/75 leading-relaxed">{service.desc}</p>
+            <p className="mt-4 text-black font-medium leading-relaxed">{service.desc}</p>
 
             <div className="mt-8">
-              <div className="text-xs uppercase tracking-widest text-foreground/50 mb-3">
+              <div className="text-xs uppercase tracking-widest text-black font-bold mb-3">
                 What's included
               </div>
               <ul className="grid sm:grid-cols-2 gap-2">
@@ -309,7 +303,7 @@ function ServiceModal({ service, onClose }: { service: Service | null; onClose: 
 
             {service.brands && (
               <div className="mt-8">
-                <div className="text-xs uppercase tracking-widest text-foreground/50 mb-3">
+                <div className="text-xs uppercase tracking-widest text-black font-bold mb-3">
                   Trusted technology partners
                 </div>
                 <div className="flex flex-wrap gap-2">

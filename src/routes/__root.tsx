@@ -103,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap",
       },
       { rel: "stylesheet", href: appCss },
     ],
@@ -131,14 +131,20 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const location = useLocation();
+  const router = useRouter();
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
+    // Force navigate to home page on initial hard load/refresh
+    if (window.location.pathname !== "/") {
+      router.navigate({ to: "/", replace: true });
+    }
+
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
     window.scrollTo(0, 0);
-  }, []);
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -157,10 +163,10 @@ function RootComponent() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={location.pathname}
-                initial={{ opacity: 0, y: 15, filter: "blur(5px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -15, filter: "blur(5px)" }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, filter: "blur(10px)" }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="w-full flex-1 flex flex-col"
               >
                 <Outlet />

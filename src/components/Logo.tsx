@@ -13,11 +13,11 @@ export function Logo({ className = "h-10 w-10" }: { className?: string }) {
 
 export function Wordmark({ size = "text-xl" }: { size?: string }) {
   return (
-    <div className="flex items-center bg-white/10 dark:bg-black/20 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20 shadow-lg">
+    <div className="flex items-center bg-white/10 dark:bg-black/20 backdrop-blur-md rounded-2xl px-3 py-1.5 border border-white/20 shadow-lg">
       <img
         src="/22new-removebg-preview.png"
         alt="TERAiT Technologies"
-        className="h-10 md:h-12 w-auto object-contain drop-shadow-sm"
+        className="h-8 md:h-9 w-auto object-contain drop-shadow-sm"
         loading="eager"
       />
     </div>

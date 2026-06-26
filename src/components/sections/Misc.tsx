@@ -21,7 +21,6 @@ export function About() {
             kicker="About TERAiT"
             title="Empowering businesses through technical excellence"
             subtitle="TERAiT Technologies is a leading provider of comprehensive IT infrastructure and specialized surveillance solutions. We bridge complex technology with seamless business operations — from architecture to 24/7 managed care."
-            linkTo="/about"
           />
           <motion.div
             className="grid sm:grid-cols-2 gap-4 mt-8"
@@ -45,13 +44,13 @@ export function About() {
                   },
                 }}
                 whileHover={{ y: -4, scale: 1.02 }}
-                className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-2xl p-6 text-left border border-white/20 shadow-lg cursor-pointer hover:shadow-2xl hover:border-white/40 transition-all duration-300 group"
+                className="glass rounded-2xl p-6 text-left shadow-lg cursor-pointer hover:shadow-2xl hover:border-white/40 transition-all duration-300 group"
               >
                 <div className="text-3xl mb-3 group-hover:scale-110 transition-transform origin-left">
                   {f.i}
                 </div>
                 <div className="font-bold drop-shadow-sm">{f.t}</div>
-                <div className="mt-1 text-sm text-foreground/90 font-medium">{f.d}</div>
+                <div className="mt-1 text-sm text-black font-semibold">{f.d}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -99,11 +98,11 @@ export function About() {
             </div>
           </div>
           <div className="absolute -bottom-6 -left-6 bg-white/20 dark:bg-black/40 backdrop-blur-3xl rounded-2xl p-5 max-w-[240px] border border-white/20 shadow-xl">
-            <div className="text-xs uppercase tracking-widest text-foreground/70">
+            <div className="text-xs uppercase tracking-widest text-black font-bold">
               Headquartered in
             </div>
             <div className="mt-1 font-semibold">Bengaluru, Karnataka</div>
-            <div className="text-xs text-foreground/80 mt-1">Serving clients pan-India</div>
+            <div className="text-xs text-black font-medium mt-1">Serving clients pan-India</div>
           </div>
         </motion.div>
       </div>
@@ -180,7 +179,6 @@ export function WhyUs() {
           kicker="Why TERAiT"
           title="The partner enterprises rely on"
           subtitle="We combine technical expertise with a relentless commitment to reliability — ensuring your IT is built for growth, scale and security."
-          linkTo="/why"
         />
 
         <motion.div
@@ -209,7 +207,7 @@ export function WhyUs() {
               className="glass gradient-border-glow rounded-2xl p-5 md:p-6 cursor-default hover:shadow-glow-blue transition-all"
             >
               <Counter to={s.n} suffix={s.s} />
-              <div className="mt-1 text-sm text-foreground/65 font-medium">{s.l}</div>
+              <div className="mt-1 text-sm text-black font-semibold">{s.l}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -227,7 +225,7 @@ export function WhyUs() {
             >
               <div className="text-3xl drop-shadow-sm">{r.i}</div>
               <div className="mt-3 font-display font-semibold text-lg">{r.t}</div>
-              <div className="mt-2 text-sm text-foreground/80 leading-relaxed font-medium">
+              <div className="mt-2 text-sm text-black leading-relaxed font-semibold">
                 {r.d}
               </div>
             </motion.div>
@@ -269,7 +267,6 @@ export function Process() {
           kicker="Our process"
           title="How we deliver, every time"
           subtitle="A proven four-step methodology built around clarity, craftsmanship and continuity."
-          linkTo="/process"
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
           <div className="hidden lg:block absolute top-12 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -284,7 +281,7 @@ export function Process() {
               className="relative glass gradient-border-glow rounded-2xl p-6 hover:shadow-xl hover:border-white/30 transition-all duration-300 group"
             >
               <div className="flex items-center justify-between">
-                <div className="text-xs font-mono text-foreground/60 font-bold group-hover:text-brand-blue transition-colors">
+                <div className="text-xs font-mono text-black font-bold group-hover:text-brand-blue transition-colors">
                   STEP {s.n}
                 </div>
                 <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] text-white grid place-items-center text-sm font-bold drop-shadow-sm group-hover:shadow-glow-blue transition-shadow">
@@ -292,7 +289,7 @@ export function Process() {
                 </div>
               </div>
               <h3 className="mt-4 font-display font-semibold text-lg">{s.t}</h3>
-              <p className="mt-2 text-sm text-foreground/80 leading-relaxed font-medium">{s.d}</p>
+              <p className="mt-2 text-sm text-black leading-relaxed font-semibold">{s.d}</p>
             </motion.div>
           ))}
         </div>
@@ -334,7 +331,7 @@ export function Brands() {
         transition={{ duration: 0.8 }}
         className="container-x"
       >
-        <div className="text-center text-xs uppercase tracking-[0.3em] text-foreground/50 mb-8">
+        <div className="text-center text-xs uppercase tracking-[0.3em] text-black font-bold mb-8">
           Powered by the world's leading technology brands
         </div>
       </motion.div>
@@ -349,7 +346,7 @@ export function Brands() {
           {[...brands, ...brands].map((b, i) => (
             <div
               key={i}
-              className="text-2xl md:text-3xl font-display font-bold text-foreground/40 hover:text-foreground transition whitespace-nowrap"
+              className="text-2xl md:text-3xl font-display font-bold text-black hover:text-black transition whitespace-nowrap"
             >
               {b}
             </div>
@@ -387,7 +384,6 @@ export function Testimonials() {
         <SectionHeader
           kicker="Loved by clients"
           title="Real outcomes, real teams"
-          linkTo="/testimonials"
         />
         <div className="grid md:grid-cols-3 gap-5">
           {data.map((t, i) => (
@@ -403,14 +399,14 @@ export function Testimonials() {
               <div className="text-5xl leading-none text-gradient-brand font-display drop-shadow-sm">
                 "
               </div>
-              <p className="mt-2 text-foreground/90 leading-relaxed font-medium">{t.q}</p>
+              <p className="mt-2 text-black leading-relaxed font-semibold">{t.q}</p>
               <div className="mt-6 flex items-center gap-3">
                 <div className="h-11 w-11 rounded-full bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] grid place-items-center font-bold text-white shadow-md">
                   {t.n[0]}
                 </div>
                 <div>
                   <div className="font-bold">{t.n}</div>
-                  <div className="text-xs text-foreground/80 font-medium">{t.r}</div>
+                  <div className="text-xs text-black font-semibold">{t.r}</div>
                 </div>
               </div>
             </motion.div>
@@ -449,7 +445,7 @@ export function FAQ() {
   return (
     <section className="relative py-24 md:py-32">
       <div className="container-x max-w-3xl">
-        <SectionHeader kicker="FAQ" title="Questions, answered" center linkTo="/faq" />
+        <SectionHeader kicker="FAQ" title="Questions, answered" center />
         <div className="space-y-3">
           {items.map((it, i) => (
             <div key={i} className="glass rounded-2xl overflow-hidden">
@@ -467,7 +463,7 @@ export function FAQ() {
                 animate={{ height: open === i ? "auto" : 0, opacity: open === i ? 1 : 0 }}
                 className="overflow-hidden"
               >
-                <div className="px-5 md:px-6 pb-6 text-foreground/70 leading-relaxed">{it.a}</div>
+                <div className="px-5 md:px-6 pb-6 text-black font-medium leading-relaxed">{it.a}</div>
               </motion.div>
             </div>
           ))}
@@ -485,11 +481,11 @@ export function Contact() {
   return (
     <section id="contact" className="relative py-24 md:py-32">
       <div className="container-x max-w-5xl">
-        <div className="bg-white/10 dark:bg-black/10 backdrop-blur-3xl rounded-2xl p-6 md:p-10 shadow-2xl glass-strong border border-white/20">
+        <div className="glass-strong rounded-2xl p-6 md:p-10 shadow-2xl">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
             Let's build your next infrastructure
           </h2>
-          <p className="text-foreground/70 mb-10 max-w-2xl">
+          <p className="text-black font-medium mb-10 max-w-2xl">
             We provide high-level enterprise solutions. Connect with our experts today to scale your
             infrastructure and secure your digital assets.
           </p>
@@ -615,14 +611,14 @@ export function Contact() {
 /* ========== Footer ========== */
 export function Footer() {
   return (
-    <footer className="relative pt-20 pb-10 border-t border-white/20 bg-white/10 dark:bg-black/40 backdrop-blur-xl shadow-2xl">
+    <footer className="relative pt-20 pb-10 glass-strong shadow-2xl border-x-0 border-b-0 rounded-none rounded-t-[40px]">
       <div className="container-x">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 drop-shadow-md">
               <Wordmark size="text-2xl" />
             </div>
-            <p className="mt-4 text-foreground/95 max-w-md leading-relaxed font-medium drop-shadow-sm">
+            <p className="mt-4 text-black max-w-md leading-relaxed font-semibold drop-shadow-sm">
               Enterprise IT infrastructure, surveillance, cloud and cybersecurity — engineered for
               businesses that refuse to compromise.
             </p>
@@ -631,7 +627,7 @@ export function Footer() {
             <div className="text-sm font-bold uppercase tracking-widest text-foreground mb-4 drop-shadow-sm">
               Company
             </div>
-            <ul className="space-y-2 text-foreground/90 font-medium">
+            <ul className="space-y-2 text-black font-semibold">
               <li>
                 <Link to="/about" className="hover:text-brand-red transition-colors">
                   About
@@ -658,7 +654,7 @@ export function Footer() {
             <div className="text-sm font-bold uppercase tracking-widest text-foreground mb-4 drop-shadow-sm">
               Reach us
             </div>
-            <ul className="space-y-2 text-foreground/90 font-medium text-sm">
+            <ul className="space-y-2 text-black font-semibold text-sm">
               <li>+91 99645 46464</li>
               <li>080 4336 4331</li>
               <li>sales@TERAiTtech.com</li>
@@ -666,7 +662,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-foreground/80">
+        <div className="mt-12 pt-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-semibold text-black">
           <div>© {new Date().getFullYear()} TERAiT Technologies Pvt Ltd. All rights reserved.</div>
           <div>Designed & engineered for enterprises.</div>
         </div>

@@ -220,7 +220,7 @@ export function VideoBackground() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0">
       {/* Gentle Animated Globs synchronized across pages */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 z-20">
+      <div className="absolute inset-0 pointer-events-none opacity-30 z-20 mix-blend-multiply">
         <motion.div
           animate={{
             scale: [1, 1.1, 1],
@@ -228,8 +228,8 @@ export function VideoBackground() {
             y: ["-5%", "10%", "-5%"]
           }}
           transition={{ duration: 20, ease: "easeInOut", repeat: Infinity }}
-          className="absolute top-0 left-0 h-[600px] w-[600px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, #fde047 0%, transparent 70%)" }}
+          className="absolute top-0 left-0 h-[800px] w-[800px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(253,224,71,0.4) 0%, transparent 70%)" }}
         />
         <motion.div
           animate={{
@@ -238,8 +238,8 @@ export function VideoBackground() {
             y: ["10%", "-5%", "10%"]
           }}
           transition={{ duration: 25, ease: "easeInOut", repeat: Infinity }}
-          className="absolute top-1/4 right-0 h-[700px] w-[700px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, #f472b6 0%, transparent 70%)" }}
+          className="absolute top-1/4 right-0 h-[900px] w-[900px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(244,114,182,0.4) 0%, transparent 70%)" }}
         />
         <motion.div
           animate={{
@@ -248,8 +248,8 @@ export function VideoBackground() {
             y: ["10%", "-5%", "10%"]
           }}
           transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
-          className="absolute bottom-0 left-1/3 h-[500px] w-[800px] rounded-full blur-[120px]"
-          style={{ background: "radial-gradient(circle, #38bdf8 0%, transparent 70%)" }}
+          className="absolute bottom-0 left-1/3 h-[700px] w-[1000px] rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(56,189,248,0.4) 0%, transparent 70%)" }}
         />
         <motion.div
           animate={{ scale: [1, 1.05, 1] }}
@@ -273,7 +273,7 @@ export function VideoBackground() {
         className="absolute inset-0 z-20"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, rgba(240,245,255,0.7) 100%)",
+            "radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(240,245,255,0.7) 100%)",
         }}
       />
       <div
