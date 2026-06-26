@@ -4,11 +4,12 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -129,17 +130,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
   const [showSplash, setShowSplash] = useState(true);
 
-  // Fallback to ensure it disappears eventually in case of any issues, and
-  // also to prevent scrolling while splash is active
   useEffect(() => {
-    if (showSplash) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
     }
-  }, [showSplash]);
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -147,13 +146,27 @@ function RootComponent() {
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
 
-      {/* Render main app immediately but it will be visually hidden beneath the splash */}
+      {/* Render background immediately, but wait for splash to finish to render the app */}
       <main className="relative">
         <VideoBackground />
-        <div className="relative z-10">
+        
+        <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
+          <div className="flex-1 flex flex-col relative w-full h-full">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 15, filter: "blur(5px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -15, filter: "blur(5px)" }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="w-full flex-1 flex flex-col"
+              >
+                <Outlet />
+              </motion.div>
+            </AnimatePresence>
+          </div>
           <Footer />
         </div>
         <ContactModal />

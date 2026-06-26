@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { triggerContactModal } from "../ContactModal";
+import Tilt from "react-parallax-tilt";
+import { TypeAnimation } from "react-type-animation";
+import { ThreeGlobe } from "../ThreeGlobe";
 
 export function Hero() {
   return (
@@ -8,49 +11,108 @@ export function Hero() {
       id="top"
       className="relative min-h-[100svh] flex items-center pt-28 pb-20 overflow-hidden"
     >
-      <div className="container-x relative z-10">
+
+
+      <div className="container-x relative z-10 flex flex-col items-center text-center mt-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs md:text-sm text-foreground/80 mb-8"
+          className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold text-foreground/90 mb-10 drop-shadow-lg bg-transparent"
         >
-          <span className="relative flex h-2 w-2">
+          <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
           </span>
           Trusted by enterprises across Bengaluru & beyond
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1 }}
-          className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-[2rem] p-8 md:p-12 shadow-2xl border border-white/20 max-w-5xl inline-block"
-        >
-          <h1 className="text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.95] font-bold tracking-tight drop-shadow-xl mb-6">
-            <span className="text-gradient drop-shadow-md">Secure. Smart.</span>
-            <br />
-            <span className="text-gradient-brand drop-shadow-md">Scalable.</span>
-          </h1>
+        <div className="relative w-full max-w-6xl mx-auto flex flex-col items-center">
+          {/* Ambient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[120%] bg-brand-blue/15 blur-[120px] rounded-[100%] pointer-events-none mix-blend-overlay" />
 
-          <p className="max-w-3xl text-lg md:text-2xl text-foreground font-medium leading-relaxed drop-shadow-sm">
-            Enterprise networking, surveillance, cloud and cybersecurity — delivered end-to-end by
-            certified engineers.{" "}
-            <span className="font-bold text-brand-red">TERAiT Technologies</span> bridges complex
-            infrastructure with seamless business operations.
-          </p>
-        </motion.div>
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.25, delayChildren: 0.2 } },
+            }}
+            className="relative z-10 flex flex-col items-center w-full"
+          >
+            <h1 className="text-[clamp(3.5rem,10vw,8.5rem)] leading-[0.9] font-bold tracking-tighter mb-8 flex flex-col items-center drop-shadow-[0_4px_32px_rgba(255,255,255,0.7)] min-h-[220px] justify-center">
+              <div className="flex gap-4 flex-wrap justify-center overflow-hidden">
+                <motion.span
+                  variants={{
+                    hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+                    show: {
+                      opacity: 1,
+                      y: 0,
+                      filter: "blur(0px)",
+                      transition: { type: "spring", stiffness: 200, damping: 20 },
+                    },
+                  }}
+                  className="text-gradient inline-block"
+                >
+                  Secure.
+                </motion.span>
+                <motion.span
+                  variants={{
+                    hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+                    show: {
+                      opacity: 1,
+                      y: 0,
+                      filter: "blur(0px)",
+                      transition: { type: "spring", stiffness: 200, damping: 20 },
+                    },
+                  }}
+                  className="text-gradient inline-block"
+                >
+                  Smart.
+                </motion.span>
+              </div>
+              <TypeAnimation
+                sequence={[
+                  "Scalable.",
+                  2000,
+                  "Reliable.",
+                  2000,
+                  "Innovative.",
+                  2000,
+                  "Powerful.",
+                  2000,
+                ]}
+                wrapper="span"
+                speed={10}
+                className="text-gradient-brand mt-1 inline-block drop-shadow-[0_10px_40px_rgba(244,63,94,0.4)]"
+                repeat={Infinity}
+              />
+            </h1>
+
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { duration: 1.2, delay: 0.8 } },
+              }}
+              className="max-w-3xl text-lg md:text-2xl text-foreground font-semibold leading-relaxed drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] mt-4 px-4"
+            >
+              Enterprise networking, surveillance, cloud and cybersecurity — delivered end-to-end by
+              certified engineers.{" "}
+              <span className="font-bold text-brand-red">TERAiT Technologies</span> bridges complex
+              infrastructure with seamless business operations.
+            </motion.p>
+          </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          transition={{ duration: 0.9, delay: 1 }}
+          className="mt-12 flex flex-wrap items-center justify-center gap-5 animate-float"
         >
           <Link
             to="/services"
-            className="group relative inline-flex items-center gap-2 rounded-full px-7 py-4 font-semibold text-white overflow-hidden"
+            className="group relative inline-flex items-center gap-2 rounded-full px-8 py-4.5 font-bold text-white overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
               background: "linear-gradient(135deg,var(--brand-red),var(--brand-blue))",
               boxShadow: "var(--shadow-glow-red)",
@@ -61,18 +123,20 @@ export function Hero() {
           </Link>
           <button
             onClick={triggerContactModal}
-            className="group inline-flex items-center gap-2 rounded-full px-7 py-4 font-semibold glass hover:bg-white/10 transition cursor-pointer border-none"
+            className="group inline-flex items-center gap-2 rounded-full px-8 py-4.5 font-bold bg-foreground/5 border border-foreground/10 hover:bg-foreground/10 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer shadow-lg drop-shadow-md"
           >
             Request a Quote
           </button>
           <a
             href="tel:+919964546464"
-            className="group inline-flex items-center gap-2 text-foreground/80 hover:text-foreground transition"
+            className="group hidden sm:inline-flex items-center gap-3 text-foreground/90 hover:text-foreground transition ml-2 drop-shadow-md"
           >
-            <span className="grid place-items-center h-10 w-10 rounded-full glass">📞</span>
+            <span className="grid place-items-center h-12 w-12 rounded-full bg-foreground/5 border border-foreground/10 shadow-md group-hover:scale-110 transition-transform">
+              📞
+            </span>
             <div className="text-left text-sm">
-              <div className="text-foreground/60">Talk to an expert</div>
-              <div className="font-semibold">+91 99645 46464</div>
+              <div className="text-foreground/70 font-medium">Talk to an expert</div>
+              <div className="font-bold text-base">+91 99645 46464</div>
             </div>
           </a>
         </motion.div>
@@ -82,7 +146,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.55 }}
-          className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl"
+          className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl w-full"
         >
           {[
             ["500+", "Projects delivered"],
@@ -90,10 +154,23 @@ export function Hero() {
             ["24/7", "Managed support"],
             ["15+", "Years of expertise"],
           ].map(([n, l]) => (
-            <div key={l} className="glass gradient-border-glow p-4 md:p-5 rounded-2xl">
-              <div className="text-2xl md:text-3xl font-display font-bold text-gradient">{n}</div>
-              <div className="text-xs md:text-sm text-foreground/60 mt-1">{l}</div>
-            </div>
+            <Tilt
+              key={l}
+              glareEnable={true}
+              glareMaxOpacity={0.15}
+              glareColor="#ffffff"
+              glarePosition="all"
+              scale={1.05}
+              tiltMaxAngleX={15}
+              tiltMaxAngleY={15}
+            >
+              <div className="bg-transparent p-5 md:p-6 rounded-3xl h-full cursor-default transition-transform hover:scale-105 border border-foreground/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+                <div className="text-3xl md:text-4xl font-display font-bold text-gradient drop-shadow-sm">
+                  {n}
+                </div>
+                <div className="text-xs md:text-sm font-semibold text-foreground/70 mt-2">{l}</div>
+              </div>
+            </Tilt>
           ))}
         </motion.div>
       </div>

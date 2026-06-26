@@ -4,6 +4,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { SectionHeader } from "./Services";
 import { Wordmark } from "../Logo";
 import { triggerContactModal, ContactRow, Field } from "../ContactModal";
+import { ThreeGlobe } from "../ThreeGlobe";
 
 /* ========== About ========== */
 export function About() {
@@ -22,31 +23,63 @@ export function About() {
             subtitle="TERAiT Technologies is a leading provider of comprehensive IT infrastructure and specialized surveillance solutions. We bridge complex technology with seamless business operations — from architecture to 24/7 managed care."
             linkTo="/about"
           />
-          <div className="grid sm:grid-cols-2 gap-4 mt-8">
+          <motion.div
+            className="grid sm:grid-cols-2 gap-4 mt-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+            }}
+          >
             {features.map((f) => (
-              <div
+              <motion.div
                 key={f.t}
-                className="bg-white/10 dark:bg-black/20 backdrop-blur-md rounded-2xl p-5 text-left border border-white/20 shadow-xl"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { type: "spring", stiffness: 300, damping: 24 },
+                  },
+                }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-2xl p-6 text-left border border-white/20 shadow-lg cursor-pointer hover:shadow-2xl hover:border-white/40 transition-all duration-300 group"
               >
-                <div className="text-2xl mb-2">{f.i}</div>
-                <div className="font-semibold">{f.t}</div>
-                <div className="mt-1 text-sm text-foreground/90">{f.d}</div>
-              </div>
+                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform origin-left">
+                  {f.i}
+                </div>
+                <div className="font-bold drop-shadow-sm">{f.t}</div>
+                <div className="mt-1 text-sm text-foreground/90 font-medium">{f.d}</div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-10 flex flex-col sm:flex-row gap-4"
+          >
             <Link
               to="/contact"
-              className="px-8 py-3 rounded-full bg-brand-red text-white font-medium hover:shadow-glow-red transition-all duration-300 transform hover:-translate-y-1"
+              className="px-8 py-4 rounded-full bg-brand-red text-white font-bold tracking-wide hover:shadow-glow-red transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
             >
-              Start Your Project
+              Start Your Project <span>→</span>
             </Link>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="relative">
-          <div className="aspect-[4/5] rounded-3xl overflow-hidden relative shadow-2xl ring-1 ring-white/20">
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="aspect-[4/5] rounded-3xl overflow-hidden relative shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/20">
             <div
               className="absolute inset-0 opacity-80"
               style={{
@@ -54,28 +87,16 @@ export function About() {
                   "conic-gradient(from 220deg at 70% 30%, var(--brand-red)33, transparent 30%, var(--brand-blue)55 60%, transparent)",
               }}
             />
-            <div className="absolute inset-0 grid place-items-center">
+            <div className="absolute inset-0 z-10 mix-blend-screen pointer-events-auto">
+              <ThreeGlobe />
+            </div>
+            <div className="absolute inset-0 z-20 grid place-items-center pointer-events-none">
               <img
                 src="/1newface-removebg-preview.png"
                 alt=""
-                className="h-48 w-48 opacity-90 animate-float object-contain"
+                className="h-48 w-48 opacity-90 animate-float object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
               />
             </div>
-            <svg
-              className="absolute inset-0 w-full h-full opacity-40"
-              viewBox="0 0 400 500"
-              fill="none"
-            >
-              <path d="M0 100 L150 100 L180 130 L400 130" stroke="url(#g1)" strokeWidth="1.5" />
-              <path d="M0 250 L100 250 L130 280 L400 280" stroke="url(#g1)" strokeWidth="1.5" />
-              <path d="M0 380 L200 380 L230 410 L400 410" stroke="url(#g1)" strokeWidth="1.5" />
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stopColor="var(--brand-red)" />
-                  <stop offset="1" stopColor="var(--brand-blue)" />
-                </linearGradient>
-              </defs>
-            </svg>
           </div>
           <div className="absolute -bottom-6 -left-6 bg-white/20 dark:bg-black/40 backdrop-blur-3xl rounded-2xl p-5 max-w-[240px] border border-white/20 shadow-xl">
             <div className="text-xs uppercase tracking-widest text-foreground/70">
@@ -84,7 +105,7 @@ export function About() {
             <div className="mt-1 font-semibold">Bengaluru, Karnataka</div>
             <div className="text-xs text-foreground/80 mt-1">Serving clients pan-India</div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -162,19 +183,36 @@ export function WhyUs() {
           linkTo="/why"
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } },
+          }}
+        >
           {[
             { n: 500, s: "+", l: "Projects delivered" },
             { n: 150, s: "+", l: "Enterprise clients" },
             { n: 24, s: "/7", l: "Managed support" },
             { n: 15, s: "+", l: "Years experience" },
           ].map((s) => (
-            <div key={s.l} className="glass gradient-border-glow rounded-2xl p-5 md:p-6">
+            <motion.div
+              key={s.l}
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                show: { opacity: 1, scale: 1, transition: { type: "spring" } },
+              }}
+              whileHover={{ y: -4, scale: 1.02 }}
+              className="glass gradient-border-glow rounded-2xl p-5 md:p-6 cursor-default hover:shadow-glow-blue transition-all"
+            >
               <Counter to={s.n} suffix={s.s} />
-              <div className="mt-1 text-sm text-foreground/65">{s.l}</div>
-            </div>
+              <div className="mt-1 text-sm text-foreground/65 font-medium">{s.l}</div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {reasons.map((r, i) => (
@@ -184,11 +222,14 @@ export function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className="glass rounded-2xl p-6"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="glass rounded-2xl p-6 hover:shadow-xl hover:border-white/30 transition-all duration-300"
             >
-              <div className="text-3xl">{r.i}</div>
+              <div className="text-3xl drop-shadow-sm">{r.i}</div>
               <div className="mt-3 font-display font-semibold text-lg">{r.t}</div>
-              <div className="mt-2 text-sm text-foreground/65 leading-relaxed">{r.d}</div>
+              <div className="mt-2 text-sm text-foreground/80 leading-relaxed font-medium">
+                {r.d}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -239,16 +280,19 @@ export function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="relative glass gradient-border-glow rounded-2xl p-6"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="relative glass gradient-border-glow rounded-2xl p-6 hover:shadow-xl hover:border-white/30 transition-all duration-300 group"
             >
               <div className="flex items-center justify-between">
-                <div className="text-xs font-mono text-foreground/50">STEP {s.n}</div>
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] text-white grid place-items-center text-sm font-bold">
+                <div className="text-xs font-mono text-foreground/60 font-bold group-hover:text-brand-blue transition-colors">
+                  STEP {s.n}
+                </div>
+                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] text-white grid place-items-center text-sm font-bold drop-shadow-sm group-hover:shadow-glow-blue transition-shadow">
                   {i + 1}
                 </div>
               </div>
               <h3 className="mt-4 font-display font-semibold text-lg">{s.t}</h3>
-              <p className="mt-2 text-sm text-foreground/65 leading-relaxed">{s.d}</p>
+              <p className="mt-2 text-sm text-foreground/80 leading-relaxed font-medium">{s.d}</p>
             </motion.div>
           ))}
         </div>
@@ -283,12 +327,24 @@ export function Brands() {
   ];
   return (
     <section className="relative py-16 border-y border-white/5">
-      <div className="container-x">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="container-x"
+      >
         <div className="text-center text-xs uppercase tracking-[0.3em] text-foreground/50 mb-8">
           Powered by the world's leading technology brands
         </div>
-      </div>
-      <div className="relative overflow-hidden">
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="relative overflow-hidden"
+      >
         <div className="flex w-max animate-marquee gap-12 px-6">
           {[...brands, ...brands].map((b, i) => (
             <div
@@ -301,7 +357,7 @@ export function Brands() {
         </div>
         <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent" />
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -341,17 +397,20 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass gradient-border-glow rounded-3xl p-7 relative"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="glass gradient-border-glow rounded-3xl p-7 relative hover:shadow-xl hover:border-white/30 transition-all duration-300"
             >
-              <div className="text-5xl leading-none text-gradient-brand font-display">"</div>
-              <p className="mt-2 text-foreground/85 leading-relaxed">{t.q}</p>
+              <div className="text-5xl leading-none text-gradient-brand font-display drop-shadow-sm">
+                "
+              </div>
+              <p className="mt-2 text-foreground/90 leading-relaxed font-medium">{t.q}</p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="h-11 w-11 rounded-full bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] grid place-items-center font-bold">
+                <div className="h-11 w-11 rounded-full bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] grid place-items-center font-bold text-white shadow-md">
                   {t.n[0]}
                 </div>
                 <div>
-                  <div className="font-semibold">{t.n}</div>
-                  <div className="text-xs text-foreground/60">{t.r}</div>
+                  <div className="font-bold">{t.n}</div>
+                  <div className="text-xs text-foreground/80 font-medium">{t.r}</div>
                 </div>
               </div>
             </motion.div>
@@ -420,6 +479,9 @@ export function FAQ() {
 
 /* ========== Contact ========== */
 export function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  
   return (
     <section id="contact" className="relative py-24 md:py-32">
       <div className="container-x max-w-5xl">
@@ -483,24 +545,64 @@ export function Contact() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                setIsSubmitting(true);
                 const f = new FormData(e.currentTarget);
-                const body = `Hi TERAiTIT,%0A%0AName: ${f.get("name")}%0AEmail: ${f.get("email")}%0APhone: ${f.get("phone")}%0A%0A${f.get("message")}`;
-                window.location.href = `mailto:sales@TERAiTtech.com?subject=Enquiry from website&body=${body}`;
+                
+                fetch("https://formsubmit.co/ajax/sales@TERAiTtech.com", {
+                  method: "POST",
+                  headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    name: f.get("name"),
+                    email: f.get("email"),
+                    phone: f.get("phone"),
+                    message: f.get("message"),
+                    _subject: "New Website Enquiry - TERAiT",
+                    _template: "table"
+                  })
+                })
+                .then(response => response.json())
+                .then(data => {
+                  setIsSubmitting(false);
+                  setIsSuccess(true);
+                  setTimeout(() => {
+                    setIsSuccess(false);
+                    // @ts-ignore
+                    e.target.reset();
+                  }, 4000);
+                })
+                .catch(error => {
+                  setIsSubmitting(false);
+                  alert("Failed to send message. Please try again or email us directly.");
+                });
               }}
-              className="bg-white/80 dark:bg-black/20 border border-black/5 dark:border-white/10 rounded-2xl p-6 md:p-8 space-y-5"
+              className="bg-white/80 dark:bg-black/20 border border-black/5 dark:border-white/10 rounded-2xl p-6 md:p-8 space-y-5 relative"
             >
+              {isSuccess ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl z-10 text-center px-4">
+                  <div className="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl mb-4 animate-bounce">
+                    ✓
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Message Sent Successfully!</h3>
+                  <p className="text-foreground/70">Our team will get back to you shortly.</p>
+                </div>
+              ) : null}
+
               <Field label="Full name" name="name" required />
               <Field label="Email address" name="email" type="email" required />
               <Field label="Phone number" name="phone" type="tel" />
               <Field label="Your message" name="message" textarea required />
               <button
                 type="submit"
-                className="w-full inline-flex justify-center items-center gap-2 rounded-xl px-6 py-4 mt-2 font-semibold text-white transition hover:opacity-90 border-none cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full relative group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 mt-2 font-bold text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-glow-blue border-none cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{
-                  background: "linear-gradient(135deg,var(--brand-red),var(--brand-blue))",
+                  background: "linear-gradient(135deg,var(--brand-blue),var(--brand-red))",
                 }}
               >
-                Submit your request →
+                {isSubmitting ? "Sending Request..." : "Submit your request →"}
               </button>
             </form>
           </div>

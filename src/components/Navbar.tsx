@@ -64,7 +64,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center gap-3">
               <button
                 onClick={triggerContactModal}
-                className="relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-white overflow-hidden group cursor-pointer border-none"
+                className="relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white overflow-hidden group cursor-pointer border-none transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-glow-red"
                 style={{ background: "linear-gradient(135deg,var(--brand-red),var(--brand-blue))" }}
               >
                 <span className="relative z-10">Request Quote</span>

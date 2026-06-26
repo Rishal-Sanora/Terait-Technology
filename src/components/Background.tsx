@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import { motion } from "framer-motion";
+import { NetworkParticles } from "./NetworkParticles";
 
 /**
  * Real 3D animated IT background: rotating wireframe icosphere
@@ -203,6 +205,7 @@ export function AuroraBg() {
 
 import { useLocation } from "@tanstack/react-router";
 import teraitBgVideo from "../assets/terait-bg-1080p-16x9.mp4";
+import { ThreeGlobe } from "./ThreeGlobe";
 
 export function VideoBackground() {
   const location = useLocation();
@@ -216,6 +219,46 @@ export function VideoBackground() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0">
+      {/* Gentle Animated Globs synchronized across pages */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 z-20">
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            x: ["-10%", "5%", "-10%"],
+            y: ["-5%", "10%", "-5%"]
+          }}
+          transition={{ duration: 20, ease: "easeInOut", repeat: Infinity }}
+          className="absolute top-0 left-0 h-[600px] w-[600px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, #fde047 0%, transparent 70%)" }}
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            x: ["10%", "-5%", "10%"],
+            y: ["10%", "-5%", "10%"]
+          }}
+          transition={{ duration: 25, ease: "easeInOut", repeat: Infinity }}
+          className="absolute top-1/4 right-0 h-[700px] w-[700px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, #f472b6 0%, transparent 70%)" }}
+        />
+        <motion.div
+          animate={{
+            scale: [1.1, 1, 1.1],
+            x: ["0%", "-10%", "0%"],
+            y: ["10%", "-5%", "10%"]
+          }}
+          transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
+          className="absolute bottom-0 left-1/3 h-[500px] w-[800px] rounded-full blur-[120px]"
+          style={{ background: "radial-gradient(circle, #38bdf8 0%, transparent 70%)" }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 15, ease: "easeInOut", repeat: Infinity }}
+          className="absolute inset-0 z-0 pointer-events-none opacity-80"
+        >
+          <ThreeGlobe />
+        </motion.div>
+      </div>
       <video
         key={videoSrc}
         autoPlay
@@ -226,6 +269,23 @@ export function VideoBackground() {
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
+      <div
+        className="absolute inset-0 z-20"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, rgba(240,245,255,0.7) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-20 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
+      />
+
+      {/* Interactive Neural Network Particles */}
+      <NetworkParticles />
     </div>
   );
 }

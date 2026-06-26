@@ -10,9 +10,14 @@ export function triggerContactModal() {
 
 export function ContactModal() {
   const [open, setOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+      setOpen(true);
+      setIsSuccess(false);
+    };
     window.addEventListener(OPEN_CONTACT_MODAL_EVENT, handleOpen);
     return () => window.removeEventListener(OPEN_CONTACT_MODAL_EVENT, handleOpen);
   }, []);
@@ -56,10 +61,11 @@ export function ContactModal() {
                 label="Email"
                 value={
                   <a
-                    href="mailto:sales@TERAiTtech.com"
+                    href="mailto:lewissanorarishu26@gmail
+                    .com"
                     className="hover:text-foreground font-medium"
                   >
-                    sales@TERAiTtech.com
+                    lewissanorarishu26@gmail.com
                   </a>
                 }
               />
@@ -80,25 +86,62 @@ export function ContactModal() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                setIsSubmitting(true);
                 const f = new FormData(e.currentTarget);
-                const body = `Hi TERAiT,%0A%0AName: ${f.get("name")}%0AEmail: ${f.get("email")}%0APhone: ${f.get("phone")}%0A%0A${f.get("message")}`;
-                window.location.href = `mailto:sales@TERAiTtech.com?subject=Enquiry from website&body=${body}`;
-                setOpen(false);
+                
+                fetch("https://formsubmit.co/ajax/sales@TERAiTtech.com", {
+                  method: "POST",
+                  headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    name: f.get("name"),
+                    email: f.get("email"),
+                    phone: f.get("phone"),
+                    message: f.get("message"),
+                    _subject: "New Website Enquiry - TERAiT",
+                    _template: "table"
+                  })
+                })
+                .then(response => response.json())
+                .then(data => {
+                  setIsSubmitting(false);
+                  setIsSuccess(true);
+                  setTimeout(() => {
+                    setOpen(false);
+                  }, 3000);
+                })
+                .catch(error => {
+                  setIsSubmitting(false);
+                  alert("Failed to send message. Please try again or email us directly.");
+                });
               }}
-              className="bg-white/80 dark:bg-black/20 border border-black/5 dark:border-white/10 rounded-2xl p-6 space-y-4"
+              className="bg-white/80 dark:bg-black/20 border border-black/5 dark:border-white/10 rounded-2xl p-6 space-y-4 relative"
             >
+              {isSuccess ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl z-10 text-center px-4">
+                  <div className="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl mb-4 animate-bounce">
+                    ✓
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">Request Sent Successfully!</h3>
+                  <p className="text-foreground/70">Our team will get back to you shortly.</p>
+                </div>
+              ) : null}
+
               <Field label="Full name" name="name" required />
               <Field label="Email address" name="email" type="email" required />
               <Field label="Phone number" name="phone" type="tel" />
               <Field label="Your message" name="message" textarea required />
               <button
                 type="submit"
-                className="w-full inline-flex justify-center items-center gap-2 rounded-xl px-6 py-4 font-semibold text-white transition hover:opacity-90"
+                disabled={isSubmitting}
+                className="w-full relative group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-bold text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-glow-blue border-none cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 style={{
-                  background: "linear-gradient(135deg,var(--brand-red),var(--brand-blue))",
+                  background: "linear-gradient(135deg,var(--brand-blue),var(--brand-red))",
                 }}
               >
-                Submit your request →
+                {isSubmitting ? "Sending Request..." : "Submit your request →"}
               </button>
             </form>
           </div>
@@ -146,7 +189,7 @@ export function Field({
   textarea?: boolean;
 }) {
   const base =
-    "w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 text-foreground rounded-lg px-4 py-2.5 outline-none focus:border-[var(--brand-blue)] focus:ring-1 focus:ring-[var(--brand-blue)] transition text-sm";
+    "w-full rounded-xl border border-white/20 bg-white/5 dark:bg-black/10 px-4 py-3 text-foreground backdrop-blur-sm transition-all duration-300 hover:bg-white/10 focus:border-brand-blue focus:bg-white/10 focus:outline-none focus:ring-4 focus:ring-brand-blue/30 focus:shadow-glow-blue";
   return (
     <label className="block">
       <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">

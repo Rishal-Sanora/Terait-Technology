@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
+import Tilt from "react-parallax-tilt";
 
 type Service = {
   title: string;
@@ -110,45 +111,78 @@ export function Services() {
           linkTo="/services"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {services.map((s, i) => (
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: { opacity: 1, transition: { staggerChildren: 0.1 } },
+          }}
+        >
+          {services.map((s) => (
             <motion.button
               key={s.title}
+              layoutId={`card-${s.title}`}
               onClick={() => setActive(s)}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.04 }}
-              whileHover={{ y: -6 }}
-              className="group text-left glass gradient-border-glow p-6 md:p-7 rounded-3xl relative overflow-hidden"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 300, damping: 24 },
+                },
+              }}
+              className="text-left cursor-pointer h-full outline-none"
             >
-              <div
-                className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br ${s.accent} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`}
-              />
-              <div className="relative">
+              <Tilt
+                glareEnable={true}
+                glareMaxOpacity={0.1}
+                glareColor="#ffffff"
+                glarePosition="all"
+                scale={1.02}
+                tiltMaxAngleX={5}
+                tiltMaxAngleY={5}
+                className="group relative bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-xl overflow-hidden hover:shadow-2xl hover:border-white/40 transition-shadow duration-300 h-full"
+              >
                 <div
-                  className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl text-2xl bg-gradient-to-br ${s.accent} text-white shadow-lg`}
-                >
-                  {s.icon}
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500 bg-gradient-to-br ${s.accent}`}
+                />
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(circle at top right, rgba(255,255,255,0.2) 0%, transparent 60%)`,
+                  }}
+                />
+                <div
+                  className={`absolute -top-20 -right-20 h-48 w-48 rounded-full bg-gradient-to-br ${s.accent} opacity-20 blur-2xl group-hover:opacity-40 transition-opacity`}
+                />
+                <div className="relative">
+                  <div
+                    className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl text-2xl bg-gradient-to-br ${s.accent} text-white shadow-lg`}
+                  >
+                    {s.icon}
+                  </div>
+                  <h3 className="mt-5 text-xl font-display font-semibold">{s.title}</h3>
+                  <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{s.desc}</p>
+                  <ul className="mt-5 space-y-1.5">
+                    {s.items.slice(0, 3).map((it) => (
+                      <li key={it} className="flex items-center gap-2 text-sm text-foreground/75">
+                        <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[var(--brand-red)] to-[var(--brand-blue)]" />
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 group-hover:text-foreground transition">
+                    Learn more{" "}
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </div>
                 </div>
-                <h3 className="mt-5 text-xl font-display font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{s.desc}</p>
-                <ul className="mt-5 space-y-1.5">
-                  {s.items.slice(0, 3).map((it) => (
-                    <li key={it} className="flex items-center gap-2 text-sm text-foreground/75">
-                      <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-[var(--brand-red)] to-[var(--brand-blue)]" />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground/80 group-hover:text-foreground transition">
-                  Learn more{" "}
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </div>
-              </div>
+              </Tilt>
             </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <ServiceModal service={active} onClose={() => setActive(null)} />
@@ -182,8 +216,14 @@ export function SectionHeader({
     </h2>
   );
   return (
-    <div className={`mb-12 md:mb-16 max-w-4xl ${center ? "mx-auto text-center" : ""}`}>
-      <div className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 shadow-2xl border border-white/20 inline-block w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, type: "spring" }}
+      className={`mb-12 md:mb-16 max-w-4xl ${center ? "mx-auto text-center" : ""}`}
+    >
+      <div className="bg-white/10 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 shadow-2xl border border-white/20 inline-block w-full hover:shadow-3xl transition-shadow">
         <div
           className={`inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-foreground/80 drop-shadow-sm ${center ? "justify-center w-full" : ""}`}
         >
@@ -214,7 +254,7 @@ export function SectionHeader({
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
