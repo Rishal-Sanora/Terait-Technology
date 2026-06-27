@@ -1,1 +1,0 @@
-import{a as e,m as t}from"./index-Ch6PBPhg.js";var n=t();function r(){return(0,n.jsx)(`div`,{className:`pt-32 pb-20 min-h-screen`,children:(0,n.jsx)(e,{})})}export{r as component};
