@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import { triggerContactModal } from "../ContactModal";
 import Tilt from "react-parallax-tilt";
 import { TypeAnimation } from "react-type-animation";
-import { ThreeGlobe } from "../ThreeGlobe";
 
 export function Hero() {
   return (

@@ -4,7 +4,6 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { SectionHeader } from "./Services";
 import { Wordmark } from "../Logo";
 import { triggerContactModal, ContactRow, Field } from "../ContactModal";
-import { ThreeGlobe } from "../ThreeGlobe";
 
 /* ========== About ========== */
 export function About() {

@@ -205,7 +205,6 @@ export function AuroraBg() {
 
 import { useLocation } from "@tanstack/react-router";
 import teraitBgVideo from "../assets/terait-bg-1080p-16x9.mp4";
-import { ThreeGlobe } from "./ThreeGlobe";
 
 export function VideoBackground() {
   const location = useLocation();

@@ -1,1 +1,0 @@
-import{m as e,t}from"./index-D5_ILzhD.js";var n=e();function r(){return(0,n.jsx)(`div`,{className:`pt-32 pb-20 min-h-screen`,children:(0,n.jsx)(t,{})})}export{r as component};

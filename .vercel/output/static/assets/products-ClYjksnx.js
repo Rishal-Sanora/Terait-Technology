@@ -1,1 +1,0 @@
-import{m as e}from"./index-D5_ILzhD.js";import{t}from"./Products-Vv-gKGLI.js";var n=e();function r(){return(0,n.jsx)(n.Fragment,{children:(0,n.jsx)(`div`,{className:`pt-32 pb-20 min-h-screen relative z-10`,children:(0,n.jsx)(t,{})})})}export{r as component};
