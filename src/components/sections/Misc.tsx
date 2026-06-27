@@ -14,6 +14,8 @@ export function About() {
   ];
   return (
     <section id="about" className="relative py-24 md:py-32 overflow-hidden">
+      {/* Ambient Spotlight: A huge, ultra-soft white glow behind the text. No hard edges, no blocks, just pure light. */}
+      <div className="absolute top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/50 blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
         <div>
           <SectionHeader
