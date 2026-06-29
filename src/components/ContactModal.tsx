@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // Global event to open the contact modal from anywhere
@@ -37,19 +37,19 @@ export function ContactModal() {
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-4">
               <ContactRow
-                icon="📍"
+                icon="ðŸ“"
                 label="Headquarters"
                 value="#24, 100 Feet Rd, HRBR Layout 1st Block, Banaswadi, Bengaluru, Karnataka 560043"
               />
               <ContactRow
-                icon="📞"
+                icon="ðŸ“ž"
                 label="Phone"
                 value={
                   <>
                     <a href="tel:+919964546464" className="hover:text-foreground font-medium">
                       +91 99645 46464
                     </a>
-                    <span className="text-foreground/40 mx-2">·</span>
+                    <span className="text-foreground/40 mx-2">Â·</span>
                     <a href="tel:08043364331" className="hover:text-foreground font-medium">
                       080 4336 4331
                     </a>
@@ -57,7 +57,7 @@ export function ContactModal() {
                 }
               />
               <ContactRow
-                icon="✉️"
+                icon="âœ‰ï¸"
                 label="Email"
                 value={
                   <a
@@ -65,7 +65,7 @@ export function ContactModal() {
                     .com"
                     className="hover:text-foreground font-medium"
                   >
-                    lewissanorarishu26@gmail.com
+                    sales@teraittech.com
                   </a>
                 }
               />
@@ -89,7 +89,7 @@ export function ContactModal() {
                 setIsSubmitting(true);
                 const f = new FormData(e.currentTarget);
 
-                fetch("https://formsubmit.co/ajax/sales@TERAiTtech.com", {
+                fetch("https://formsubmit.co/ajax/sales@teraittech.com", {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export function ContactModal() {
               {isSuccess ? (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl z-10 text-center px-4">
                   <div className="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl mb-4 animate-bounce">
-                    ✓
+                    âœ“
                   </div>
                   <h3 className="text-xl font-bold mb-2">Request Sent Successfully!</h3>
                   <p className="text-foreground/70">Our team will get back to you shortly.</p>
@@ -141,7 +141,7 @@ export function ContactModal() {
                   background: "linear-gradient(135deg,var(--brand-blue),var(--brand-red))",
                 }}
               >
-                {isSubmitting ? "Sending Request..." : "Submit your request →"}
+                {isSubmitting ? "Sending Request..." : "Submit your request â†’"}
               </button>
             </form>
           </div>
@@ -162,7 +162,7 @@ export function ContactRow({
 }) {
   return (
     <div className="bg-white/50 dark:bg-black/10 border border-black/5 dark:border-white/5 rounded-xl p-4 flex gap-4 items-center">
-      <div className="h-10 w-10 shrink-0 rounded-lg bg-gradient-to-br from-[var(--brand-red)] to-[var(--brand-blue)] text-white text-xl grid place-items-center font-bold">
+      <div className="h-10 w-10 shrink-0 rounded-lg bg-brand-red text-white text-xl grid place-items-center font-bold">
         {icon}
       </div>
       <div>

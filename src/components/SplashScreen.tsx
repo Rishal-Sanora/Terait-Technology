@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { Wordmark } from "./Logo";
 
@@ -83,7 +83,7 @@ export function SplashScreen({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 0, y: -30, filter: "blur(12px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
-          className="scale-125 md:scale-150 mb-8 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] text-slate-900"
+          className="scale-125 md:scale-150 mb-8 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] text-brand-blue"
         >
           <Wordmark size="text-4xl" />
         </motion.div>

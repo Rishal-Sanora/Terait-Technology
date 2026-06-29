@@ -15,7 +15,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Misc";
-import { VideoBackground } from "@/components/Background";
+import { ElegantBackground } from "@/components/Background";
 import { ContactModal } from "@/components/ContactModal";
 import { SplashScreen } from "@/components/SplashScreen";
 
@@ -154,7 +154,7 @@ function RootComponent() {
 
       {/* Render background immediately, but wait for splash to finish to render the app */}
       <main className="relative">
-        <VideoBackground />
+        <ElegantBackground />
 
         <div className="relative z-10 flex min-h-screen flex-col">
           <Navbar />
@@ -163,10 +163,10 @@ function RootComponent() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={location.pathname}
-                initial={{ opacity: 0, filter: "blur(10px)" }}
-                animate={{ opacity: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, filter: "blur(10px)" }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 className="w-full flex-1 flex flex-col"
               >
                 <Outlet />

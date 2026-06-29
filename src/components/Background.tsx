@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { motion } from "framer-motion";
-import { NetworkParticles } from "./NetworkParticles";
 
 /**
  * Real 3D animated IT background: rotating wireframe icosphere
@@ -35,7 +34,7 @@ export function ThreeBackground({ className = "" }: { className?: string }) {
     // Wireframe globe (network sphere)
     const globeGeo = new THREE.IcosahedronGeometry(2.2, 3);
     const globeMat = new THREE.MeshBasicMaterial({
-      color: 0x003d7a,
+      color: 0x0f5132, // Dark Green
       wireframe: true,
       transparent: true,
       opacity: 0.28,
@@ -46,7 +45,7 @@ export function ThreeBackground({ className = "" }: { className?: string }) {
     // Inner red wire (smaller)
     const innerGeo = new THREE.IcosahedronGeometry(1.55, 2);
     const innerMat = new THREE.MeshBasicMaterial({
-      color: 0xc8102e,
+      color: 0x997300, // Dark Yellow
       wireframe: true,
       transparent: true,
       opacity: 0.22,
@@ -57,8 +56,8 @@ export function ThreeBackground({ className = "" }: { className?: string }) {
     // Glowing nodes on outer sphere
     const nodeCount = 80;
     const nodeGeo = new THREE.SphereGeometry(0.03, 12, 12);
-    const nodeRed = new THREE.MeshBasicMaterial({ color: 0xc8102e });
-    const nodeBlue = new THREE.MeshBasicMaterial({ color: 0x003d7a });
+    const nodeRed = new THREE.MeshBasicMaterial({ color: 0x997300 });
+    const nodeBlue = new THREE.MeshBasicMaterial({ color: 0x0f5132 });
     const nodes: THREE.Mesh[] = [];
     for (let i = 0; i < nodeCount; i++) {
       const phi = Math.acos(-1 + (2 * i) / nodeCount);
@@ -88,7 +87,7 @@ export function ThreeBackground({ className = "" }: { className?: string }) {
     const dustGeo = new THREE.BufferGeometry();
     dustGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const dustMat = new THREE.PointsMaterial({
-      color: 0x003d7a,
+      color: 0x0f5132,
       size: 0.04,
       transparent: true,
       opacity: 0.5,
@@ -100,7 +99,7 @@ export function ThreeBackground({ className = "" }: { className?: string }) {
     // Orbit ring
     const ringGeo = new THREE.TorusGeometry(3.2, 0.005, 8, 200);
     const ringMat = new THREE.MeshBasicMaterial({
-      color: 0xc8102e,
+      color: 0x997300,
       transparent: true,
       opacity: 0.35,
     });
@@ -110,7 +109,7 @@ export function ThreeBackground({ className = "" }: { className?: string }) {
 
     const ring2 = new THREE.Mesh(
       new THREE.TorusGeometry(3.6, 0.004, 8, 200),
-      new THREE.MeshBasicMaterial({ color: 0x003d7a, transparent: true, opacity: 0.3 }),
+      new THREE.MeshBasicMaterial({ color: 0x0f5132, transparent: true, opacity: 0.3 }),
     );
     ring2.rotation.x = Math.PI / 1.8;
     scene.add(ring2);
@@ -203,51 +202,114 @@ export function AuroraBg() {
   );
 }
 
-import { useLocation } from "@tanstack/react-router";
-import teraitBgVideo from "../assets/terait-bg-1080p-16x9.mp4";
-
-export function VideoBackground() {
-  const location = useLocation();
-  const path = location.pathname.toLowerCase();
-  const isAltVideo = path.includes("/services") || path.includes("/products");
-  const isAboutPage = path.includes("about");
-
-  let videoSrc = "/background-video.mp4";
-  if (isAltVideo) videoSrc = "/terait-loop-1080p-fast.mp4";
-
-  if (isAboutPage) {
-    return (
-      <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0 bg-black">
-        <video
-          key="/terait-bg-1080p-16x9.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover z-10 opacity-100"
-        >
-          <source src="/terait-bg-1080p-16x9.mp4" type="video/mp4" />
-        </video>
-      </div>
-    );
-  }
-
+export function ElegantBackground() {
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-      <video
-        key={videoSrc}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover z-10 opacity-100"
-      >
-        <source src={videoSrc} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 z-20 bg-white/5" />
+    <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0 bg-transparent">
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          rotate: [0, 90, 0],
+          x: ["0%", "5%", "0%"],
+          y: ["0%", "5%", "0%"],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full opacity-20 blur-[120px]"
+        style={{ background: "radial-gradient(circle, var(--brand-blue) 0%, transparent 60%)" }}
+      />
+      
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          rotate: [0, -90, 0],
+          x: ["0%", "-5%", "0%"],
+          y: ["0%", "-5%", "0%"],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full opacity-15 blur-[120px]"
+        style={{ background: "radial-gradient(circle, var(--brand-red) 0%, transparent 60%)" }}
+      />
 
-      {/* Interactive Neural Network Particles */}
-      <NetworkParticles />
+      {/* The rotating 3D networking globe */}
+      <ThreeBackground className="opacity-[0.25]" />
+
+      <FloatingParticles />
+      <LightBeams />
+
+      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay noise" />
+    </div>
+  );
+}
+
+function FloatingParticles() {
+  const particles = Array.from({ length: 30 }).map((_, i) => {
+    const size = Math.random() * 8 + 3;
+    const left = Math.random() * 100;
+    const duration = Math.random() * 15 + 15;
+    const delay = Math.random() * 20;
+    const xDrift = (Math.random() - 0.5) * 150;
+    const isRed = i % 2 === 0;
+
+    return (
+      <motion.div
+        key={i}
+        className="absolute rounded-full"
+        style={{
+          background: isRed ? "var(--brand-red)" : "var(--brand-blue)",
+          width: size + "px",
+          height: size + "px",
+          left: left + "%",
+          bottom: "-5%",
+          filter: "blur(2px)",
+        }}
+        initial={{ y: 0, x: 0, opacity: 0 }}
+        animate={{
+          y: "-110vh",
+          x: xDrift,
+          opacity: [0, 0.4, 0],
+        }}
+        transition={{
+          duration: duration,
+          repeat: Infinity,
+          delay: delay,
+          ease: "linear",
+        }}
+      />
+    );
+  });
+
+  return <div className="absolute inset-0 pointer-events-none">{particles}</div>;
+}
+
+function LightBeams() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.35]">
+      <motion.div
+        animate={{ x: ["-100%", "150%"] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/4 -left-1/4 w-[150%] h-[15vh] -rotate-12"
+        style={{
+          background: "linear-gradient(90deg, transparent, var(--brand-red), transparent)",
+          filter: "blur(40px)",
+        }}
+      />
+      <motion.div
+        animate={{ x: ["150%", "-100%"] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "linear", delay: 2 }}
+        className="absolute bottom-1/4 -right-1/4 w-[150%] h-[20vh] rotate-[15deg]"
+        style={{
+          background: "linear-gradient(90deg, transparent, var(--brand-blue), transparent)",
+          filter: "blur(50px)",
+        }}
+      />
+      <motion.div
+        animate={{ y: ["-100%", "200%"] }}
+        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        className="absolute left-1/3 -top-1/4 w-[10vw] h-[150%] rotate-12"
+        style={{
+          background: "linear-gradient(180deg, transparent, var(--brand-red), transparent)",
+          filter: "blur(60px)",
+        }}
+      />
     </div>
   );
 }

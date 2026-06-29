@@ -15,7 +15,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold text-black mb-10 drop-shadow-lg bg-transparent"
+          className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs md:text-sm font-semibold text-brand-blue mb-10 drop-shadow-lg bg-transparent"
         >
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
@@ -46,7 +46,7 @@ export function Hero() {
                       opacity: 1,
                       y: 0,
                       filter: "blur(0px)",
-                      transition: { type: "spring", stiffness: 200, damping: 20 },
+                      transition: { duration: 0.6, ease: "easeOut" },
                     },
                   }}
                   className="text-gradient inline-block"
@@ -60,7 +60,7 @@ export function Hero() {
                       opacity: 1,
                       y: 0,
                       filter: "blur(0px)",
-                      transition: { type: "spring", stiffness: 200, damping: 20 },
+                      transition: { duration: 0.6, ease: "easeOut" },
                     },
                   }}
                   className="text-gradient inline-block"
@@ -95,7 +95,7 @@ export function Hero() {
             >
               Enterprise networking, surveillance, cloud and cybersecurity — delivered end-to-end by
               certified engineers.{" "}
-              <span className="font-bold text-brand-red">TERAiT Technologies</span> bridges complex
+              <span className="font-bold text-brand-blue">Terait Technologies</span> bridges complex
               infrastructure with seamless business operations.
             </motion.p>
           </motion.div>
@@ -111,7 +111,7 @@ export function Hero() {
             to="/services"
             className="group relative inline-flex items-center gap-2 rounded-full px-8 py-4.5 font-bold text-white overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
-              background: "linear-gradient(135deg,var(--brand-red),var(--brand-blue))",
+              background: "var(--brand-red)",
               boxShadow: "var(--shadow-glow-red)",
             }}
           >
@@ -132,8 +132,8 @@ export function Hero() {
               📞
             </span>
             <div className="text-left text-sm">
-              <div className="text-black font-semibold">Talk to an expert</div>
-              <div className="font-bold text-base text-black">+91 99645 46464</div>
+              <div className="text-brand-blue font-semibold">Talk to an expert</div>
+              <div className="font-bold text-base text-brand-blue">+91 99645 46464</div>
             </div>
           </a>
         </motion.div>
@@ -161,18 +161,18 @@ export function Hero() {
               tiltMaxAngleX={15}
               tiltMaxAngleY={15}
             >
-              <div className="bg-transparent p-5 md:p-6 rounded-3xl h-full cursor-default transition-transform hover:scale-105 border border-foreground/5 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
+              <div className="glass p-5 md:p-6 h-full cursor-default transition-transform hover:scale-105 hover:bg-white/5 border-white/10">
                 <div className="text-3xl md:text-4xl font-display font-bold text-gradient drop-shadow-sm">
                   {n}
                 </div>
-                <div className="text-xs md:text-sm font-semibold text-black mt-2">{l}</div>
+                <div className="text-xs md:text-sm font-semibold text-brand-blue mt-2">{l}</div>
               </div>
             </Tilt>
           ))}
         </motion.div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs font-bold text-black">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs font-bold text-brand-blue">
         <span>Scroll to explore</span>
         <span className="h-8 w-px bg-gradient-to-b from-slate-400 to-transparent" />
       </div>

@@ -64,12 +64,6 @@ const categories = [
     brands: ["Zebra", "Honeywell", "Epson", "NCR"],
   },
   {
-    name: "Mobility & Smart Devices",
-    icon: "📱",
-    items: "Smartphones, Tablets, Wearables",
-    brands: ["Apple", "Samsung", "Lenovo", "OnePlus"],
-  },
-  {
     name: "IoT & Smart Solutions",
     icon: "🛰️",
     items: "Smart Cities, Industrial IoT, AI Automation",
@@ -80,11 +74,12 @@ const categories = [
 export function Products() {
   return (
     <section id="products" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] rounded-full opacity-20 blur-3xl"
           style={{ background: "radial-gradient(closest-side,var(--brand-blue),transparent 70%)" }}
         />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full" />
       </div>
 
       <div className="container-x relative z-10">
