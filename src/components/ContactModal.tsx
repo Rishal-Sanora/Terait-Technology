@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // Global event to open the contact modal from anywhere
@@ -61,8 +61,7 @@ export function ContactModal() {
                 label="Email"
                 value={
                   <a
-                    href="mailto:lewissanorarishu26@gmail
-                    .com"
+                    href="mailto:sales@teraittech.com"
                     className="hover:text-foreground font-medium"
                   >
                     sales@teraittech.com
