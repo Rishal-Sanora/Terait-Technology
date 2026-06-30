@@ -1,9 +1,10 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { SectionHeader } from "./Services";
 import { Wordmark } from "../Logo";
 import { triggerContactModal, ContactRow, Field } from "../ContactModal";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 /* ========== About ========== */
 export function About() {
@@ -481,12 +482,12 @@ export function Contact() {
           <div className="grid lg:grid-cols-2 gap-10">
             <div className="space-y-4">
               <ContactRow
-                icon="📍"
+                icon={<MapPin className="h-5 w-5" />}
                 label="Headquarters"
                 value="#24, 100 Feet Rd, HRBR Layout 1st Block, Banaswadi, Bengaluru, Karnataka 560043"
               />
               <ContactRow
-                icon="📞"
+                icon={<Phone className="h-5 w-5" />}
                 label="Phone"
                 value={
                   <>
@@ -501,7 +502,7 @@ export function Contact() {
                 }
               />
               <ContactRow
-                icon="✉️"
+                icon={<Mail className="h-5 w-5" />}
                 label="Email"
                 value={
                   <a
@@ -512,7 +513,7 @@ export function Contact() {
                   </a>
                 }
               />
-              <ContactRow icon="🕒" label="Working Hours" value="9:30 am to 6:30 pm" />
+              <ContactRow icon={<Clock className="h-5 w-5" />} label="Working Hours" value="9:30 am to 6:30 pm" />
 
               <div className="mt-8 rounded-xl overflow-hidden h-[250px] border border-black/10">
                 <iframe

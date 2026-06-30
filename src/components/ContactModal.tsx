@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { MapPin, Phone, Mail, CheckCircle2 } from "lucide-react";
 
 // Global event to open the contact modal from anywhere
 export const OPEN_CONTACT_MODAL_EVENT = "open-contact-modal";
@@ -37,19 +38,19 @@ export function ContactModal() {
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-4">
               <ContactRow
-                icon="ðŸ“"
+                icon={<MapPin className="h-5 w-5" />}
                 label="Headquarters"
                 value="#24, 100 Feet Rd, HRBR Layout 1st Block, Banaswadi, Bengaluru, Karnataka 560043"
               />
               <ContactRow
-                icon="ðŸ“ž"
+                icon={<Phone className="h-5 w-5" />}
                 label="Phone"
                 value={
                   <>
                     <a href="tel:+919964546464" className="hover:text-foreground font-medium">
                       +91 99645 46464
                     </a>
-                    <span className="text-foreground/40 mx-2">Â·</span>
+                    <span className="text-foreground/40 mx-2">·</span>
                     <a href="tel:08043364331" className="hover:text-foreground font-medium">
                       080 4336 4331
                     </a>
@@ -57,7 +58,7 @@ export function ContactModal() {
                 }
               />
               <ContactRow
-                icon="âœ‰ï¸"
+                icon={<Mail className="h-5 w-5" />}
                 label="Email"
                 value={
                   <a
@@ -121,7 +122,7 @@ export function ContactModal() {
               {isSuccess ? (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl z-10 text-center px-4">
                   <div className="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl mb-4 animate-bounce">
-                    âœ“
+                    <CheckCircle2 className="h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Request Sent Successfully!</h3>
                   <p className="text-foreground/70">Our team will get back to you shortly.</p>
@@ -155,7 +156,7 @@ export function ContactRow({
   label,
   value,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   value: React.ReactNode;
 }) {
@@ -188,7 +189,7 @@ export function Field({
   textarea?: boolean;
 }) {
   const base =
-    "w-full rounded-xl border border-white/20 bg-white/5 dark:bg-black/10 px-4 py-3 text-foreground backdrop-blur-sm transition-all duration-300 hover:bg-white/10 focus:border-brand-blue focus:bg-white/10 focus:outline-none focus:ring-4 focus:ring-brand-blue/30 focus:shadow-glow-blue";
+    "w-full rounded-xl border border-black/20 dark:border-white/20 bg-black/5 dark:bg-white/10 px-4 py-3 text-foreground backdrop-blur-sm transition-all duration-300 hover:bg-black/10 dark:hover:bg-white/20 focus:border-brand-blue focus:bg-black/5 dark:focus:bg-white/10 focus:outline-none focus:ring-4 focus:ring-brand-blue/30 focus:shadow-glow-blue";
   return (
     <label className="block">
       <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/60">
