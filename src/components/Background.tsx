@@ -204,7 +204,10 @@ export function AuroraBg() {
 
 export function ElegantBackground() {
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 overflow-hidden z-0 bg-transparent">
+    <div
+      aria-hidden
+      className="pointer-events-none fixed inset-0 overflow-hidden z-0 bg-transparent"
+    >
       <motion.div
         animate={{
           scale: [1, 1.2, 1],
@@ -216,7 +219,7 @@ export function ElegantBackground() {
         className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full opacity-20 blur-[60px] md:blur-[120px] transform-gpu"
         style={{ background: "radial-gradient(circle, var(--brand-blue) 0%, transparent 60%)" }}
       />
-      
+
       <motion.div
         animate={{
           scale: [1, 1.3, 1],

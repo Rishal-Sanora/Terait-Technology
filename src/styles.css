@@ -86,7 +86,9 @@
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -101,9 +103,12 @@
     background: color-mix(in oklab, var(--brand-red) 40%, transparent);
     color: white;
   }
-  
+
   /* Apply blur to all surface and card backgrounds automatically */
-  .bg-surface, .bg-surface-2, .bg-card, .bg-popover {
+  .bg-surface,
+  .bg-surface-2,
+  .bg-card,
+  .bg-popover {
     backdrop-filter: blur(16px) saturate(180%) hue-rotate(15deg) contrast(110%);
     -webkit-backdrop-filter: blur(16px) saturate(180%) hue-rotate(15deg) contrast(110%);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -126,7 +131,9 @@
   background: rgba(245, 240, 235, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius-2xl);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 8px 32px -4px rgba(28, 25, 23, 0.05);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    0 8px 32px -4px rgba(28, 25, 23, 0.05);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
@@ -135,7 +142,9 @@
   background: rgba(253, 252, 251, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: var(--radius-2xl);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 12px 48px -4px rgba(28, 25, 23, 0.08);
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    0 12px 48px -4px rgba(28, 25, 23, 0.08);
   backdrop-filter: blur(32px) saturate(200%);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
 }
@@ -144,18 +153,15 @@
   background: rgba(245, 240, 235, 0.85); /* Warm light grey for navbar */
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-2xl);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 8px 32px -4px rgba(28, 25, 23, 0.1);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 8px 32px -4px rgba(28, 25, 23, 0.1);
   backdrop-filter: blur(32px) saturate(180%);
   -webkit-backdrop-filter: blur(32px) saturate(180%);
 }
 
 @utility text-gradient {
-  background: linear-gradient(
-    180deg,
-    #ff4d4d 0%,
-    #e60000 50%,
-    #b30000 100%
-  );
+  background: linear-gradient(180deg, #ff4d4d 0%, #e60000 50%, #b30000 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -165,11 +171,7 @@
 /* Dark theme override removed for light theme */
 
 @utility text-gradient-brand {
-  background: linear-gradient(
-    180deg,
-    #ff4d4d 0%,
-    #b30000 100%
-  );
+  background: linear-gradient(180deg, #ff4d4d 0%, #b30000 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

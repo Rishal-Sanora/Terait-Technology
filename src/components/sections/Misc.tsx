@@ -81,8 +81,7 @@ export function About() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="aspect-square rounded-3xl overflow-hidden relative shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/20 glass">
-            <div className="absolute inset-0 z-20 mix-blend-screen pointer-events-auto">
-            </div>
+            <div className="absolute inset-0 z-20 mix-blend-screen pointer-events-auto"></div>
             <div className="absolute inset-0 z-30 grid place-items-center pointer-events-none">
               <img
                 src="/1newface-removebg-preview.png"
@@ -213,7 +212,9 @@ export function WhyUs() {
             >
               <div className="text-3xl drop-shadow-sm">{r.i}</div>
               <div className="mt-3 font-display font-semibold text-lg">{r.t}</div>
-              <div className="mt-2 text-sm text-brand-blue leading-relaxed font-semibold">{r.d}</div>
+              <div className="mt-2 text-sm text-brand-blue leading-relaxed font-semibold">
+                {r.d}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -513,7 +514,11 @@ export function Contact() {
                   </a>
                 }
               />
-              <ContactRow icon={<Clock className="h-5 w-5" />} label="Working Hours" value="9:30 am to 6:30 pm" />
+              <ContactRow
+                icon={<Clock className="h-5 w-5" />}
+                label="Working Hours"
+                value="9:30 am to 6:30 pm"
+              />
 
               <div className="mt-8 rounded-xl overflow-hidden h-[250px] border border-black/10">
                 <iframe

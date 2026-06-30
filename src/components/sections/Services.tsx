@@ -165,7 +165,9 @@ export function Services() {
                     {s.icon}
                   </div>
                   <h3 className="mt-4 text-lg font-display font-semibold">{s.title}</h3>
-                  <p className="mt-2 text-xs text-brand-blue font-medium leading-relaxed">{s.desc}</p>
+                  <p className="mt-2 text-xs text-brand-blue font-medium leading-relaxed">
+                    {s.desc}
+                  </p>
                   <ul className="mt-4 space-y-1">
                     {s.items.slice(0, 3).map((it) => (
                       <li
