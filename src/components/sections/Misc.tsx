@@ -16,7 +16,7 @@ export function About() {
   return (
     <section id="about" className="relative py-24 md:py-32 overflow-hidden">
       {/* Ambient Spotlight: A huge, ultra-soft white glow behind the text. No hard edges, no blocks, just pure light. */}
-      <div className="absolute top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/50 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-0 -translate-x-1/4 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/50 blur-[60px] md:blur-[140px] transform-gpu rounded-full pointer-events-none z-0" />
       <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
         <div>
           <SectionHeader
@@ -161,7 +161,7 @@ export function WhyUs() {
   ];
   return (
     <section id="why" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[60px] md:blur-[140px] transform-gpu rounded-full pointer-events-none z-0" />
       <div className="container-x relative z-10">
         <SectionHeader
           kicker="Why TERAiT"
@@ -248,7 +248,7 @@ export function Process() {
   ];
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[60px] md:blur-[140px] transform-gpu rounded-full pointer-events-none z-0" />
       <div className="container-x relative z-10">
         <SectionHeader
           kicker="Our process"
@@ -367,7 +367,7 @@ export function Testimonials() {
   ];
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[60px] md:blur-[140px] transform-gpu rounded-full pointer-events-none z-0" />
       <div className="container-x relative z-10">
         <SectionHeader kicker="Loved by clients" title="Real outcomes, real teams" />
         <div className="grid md:grid-cols-3 gap-5">
@@ -429,7 +429,7 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[800px] bg-white/40 blur-[60px] md:blur-[140px] transform-gpu rounded-full pointer-events-none z-0" />
       <div className="container-x max-w-3xl relative z-10">
         <SectionHeader kicker="FAQ" title="Questions, answered" center />
         <div className="space-y-3">
@@ -468,7 +468,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[60px] md:blur-[140px] transform-gpu rounded-full pointer-events-none z-0" />
       <div className="container-x max-w-5xl relative z-10">
         <div className="glass-strong rounded-2xl p-6 md:p-10 shadow-2xl">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">

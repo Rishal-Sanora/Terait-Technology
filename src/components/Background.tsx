@@ -182,11 +182,11 @@ export function AuroraBg() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <div
-        className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full opacity-30 blur-3xl"
+        className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full opacity-30 blur-2xl md:blur-3xl transform-gpu"
         style={{ background: "radial-gradient(closest-side, var(--brand-red), transparent 70%)" }}
       />
       <div
-        className="absolute top-1/3 -right-40 h-[600px] w-[600px] rounded-full opacity-25 blur-3xl"
+        className="absolute top-1/3 -right-40 h-[600px] w-[600px] rounded-full opacity-25 blur-2xl md:blur-3xl transform-gpu"
         style={{ background: "radial-gradient(closest-side, var(--brand-blue), transparent 70%)" }}
       />
       <div
@@ -213,7 +213,7 @@ export function ElegantBackground() {
           y: ["0%", "5%", "0%"],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full opacity-20 blur-[120px]"
+        className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full opacity-20 blur-[60px] md:blur-[120px] transform-gpu"
         style={{ background: "radial-gradient(circle, var(--brand-blue) 0%, transparent 60%)" }}
       />
       
@@ -225,7 +225,7 @@ export function ElegantBackground() {
           y: ["0%", "-5%", "0%"],
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full opacity-15 blur-[120px]"
+        className="absolute -bottom-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full opacity-15 blur-[60px] md:blur-[120px] transform-gpu"
         style={{ background: "radial-gradient(circle, var(--brand-red) 0%, transparent 60%)" }}
       />
 
