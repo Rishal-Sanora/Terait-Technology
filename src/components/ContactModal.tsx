@@ -50,7 +50,7 @@ export function ContactModal() {
                     <a href="tel:+919964546464" className="hover:text-foreground font-medium">
                       +91 99645 46464
                     </a>
-                    <span className="text-foreground/40 mx-2">·</span>
+                    <span className="text-foreground/40 mx-2">-</span>
                     <a href="tel:08043364331" className="hover:text-foreground font-medium">
                       080 4336 4331
                     </a>
@@ -141,7 +141,7 @@ export function ContactModal() {
                   background: "linear-gradient(135deg,var(--brand-blue),var(--brand-red))",
                 }}
               >
-                {isSubmitting ? "Sending Request..." : "Submit your request â†’"}
+                {isSubmitting ? "Sending Request..." : "Submit your request"}
               </button>
             </form>
           </div>

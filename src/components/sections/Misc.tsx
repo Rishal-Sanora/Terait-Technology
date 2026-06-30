@@ -4,7 +4,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { SectionHeader } from "./Services";
 import { Wordmark } from "../Logo";
 import { triggerContactModal, ContactRow, Field } from "../ContactModal";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, CheckCircle2 } from "lucide-react";
 
 /* ========== About ========== */
 export function About() {
@@ -68,7 +68,7 @@ export function About() {
               to="/contact"
               className="px-8 py-4 rounded-full bg-brand-red text-white font-bold tracking-wide hover:shadow-glow-red transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
             >
-              Start Your Project <span>→</span>
+              Start Your Project <span>-&gt;</span>
             </Link>
           </motion.div>
         </div>
@@ -494,7 +494,7 @@ export function Contact() {
                     <a href="tel:+919964546464" className="hover:text-foreground font-medium">
                       +91 99645 46464
                     </a>
-                    <span className="text-foreground/40 mx-2">·</span>
+                    <span className="text-foreground/40 mx-2">-</span>
                     <a href="tel:08043364331" className="hover:text-foreground font-medium">
                       080 4336 4331
                     </a>
@@ -555,8 +555,7 @@ export function Contact() {
                     setIsSuccess(true);
                     setTimeout(() => {
                       setIsSuccess(false);
-                      // @ts-expect-error - grecaptcha target type is missing
-                      e.target.reset();
+                      (e.target as HTMLFormElement).reset();
                     }, 4000);
                   })
                   .catch((error) => {
@@ -569,7 +568,7 @@ export function Contact() {
               {isSuccess ? (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-black/90 backdrop-blur-md rounded-2xl z-10 text-center px-4">
                   <div className="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl mb-4 animate-bounce">
-                    ✓
+                    <CheckCircle2 className="h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">Message Sent Successfully!</h3>
                   <p className="text-foreground/70">Our team will get back to you shortly.</p>
@@ -588,7 +587,7 @@ export function Contact() {
                   background: "linear-gradient(135deg,var(--brand-blue),var(--brand-red))",
                 }}
               >
-                {isSubmitting ? "Sending Request..." : "Submit your request →"}
+                {isSubmitting ? "Sending Request..." : "Submit your request"}
               </button>
             </form>
           </div>
