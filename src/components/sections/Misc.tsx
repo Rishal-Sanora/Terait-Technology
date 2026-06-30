@@ -160,7 +160,7 @@ export function WhyUs() {
     },
   ];
   return (
-    <section id="why" className="relative py-24 md:py-32">
+    <section id="why" className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="container-x relative z-10">
         <SectionHeader
@@ -247,7 +247,7 @@ export function Process() {
     },
   ];
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="container-x relative z-10">
         <SectionHeader
@@ -310,7 +310,7 @@ export function Brands() {
     "NetApp",
   ];
   return (
-    <section className="relative py-16 border-y border-white/5">
+    <section className="relative py-16 border-y border-white/5 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -366,7 +366,7 @@ export function Testimonials() {
     },
   ];
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="container-x relative z-10">
         <SectionHeader kicker="Loved by clients" title="Real outcomes, real teams" />
@@ -428,7 +428,7 @@ export function FAQ() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="relative py-24 md:py-32">
+    <section className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="container-x max-w-3xl relative z-10">
         <SectionHeader kicker="FAQ" title="Questions, answered" center />
@@ -467,7 +467,7 @@ export function Contact() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   return (
-    <section id="contact" className="relative py-24 md:py-32">
+    <section id="contact" className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-white/40 blur-[140px] rounded-full pointer-events-none z-0" />
       <div className="container-x max-w-5xl relative z-10">
         <div className="glass-strong rounded-2xl p-6 md:p-10 shadow-2xl">

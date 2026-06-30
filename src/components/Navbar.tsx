@@ -116,7 +116,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-x-0 top-[80px] z-40 md:hidden px-5"
+            className="fixed inset-x-0 top-[80px] z-40 md:hidden px-5 max-h-[calc(100vh-100px)] overflow-y-auto"
           >
             <div className="glass-dark rounded-3xl p-5 border border-white/10 shadow-2xl">
               <div className="flex flex-col">
